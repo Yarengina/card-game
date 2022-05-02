@@ -11,20 +11,66 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <section class="box">
+    <form class="box" action="#">
         <h1 class="box__title">Выбери сложность</h1>
         <div class="box__number">
-            <div class="number">
-                <p class="number__text">1</p>
-            </div>
-            <div class="number">
-                <p class="number__text">2</p>
-            </div>
-            <div class="number">
-                <p class="number__text">3</p>
-            </div>
+            <label class="number">
+                <input class="number__radio" type="radio" name="number" value="1">
+                <span class="number__text">1</span>
+            </label>
+            <label class="number">
+                <input class="number__radio" type="radio" name="number" value="2">
+                <span class="number__text">2</span>
+            </label>
+            <label class="number">
+                <input class="number__radio" type="radio" name="number" value="3">
+                <span class="number__text">3</span>
+            </label>
         </div>
         <button class="box__button">Старт</button>
-    </section>
+    </form>
+    <script>
+        window.application = {
+            screens: {},
+            renderScreen: function(screenName) {
+                const body = document.querySelector('body');
+                body.textContent = '';
+                this.screens[`${screenName}`]();
+            },
+            time: {},
+        }
+    </script>
+    <script src="./level_1.js"></script>
+    <script src="./level_2.js"></script>
+    <script src="./level_3.js"></script>
+    <script>
+        const radioAll = document.querySelectorAll('.number__radio');
+        const form = document.querySelector('.box');
+
+        radioAll.forEach(radio => {
+            radio.addEventListener('click', () => {
+                if (radio.checked) {
+                    const parent = radio.parentElement;
+                    parent.style.background = '#0080C1';
+                }
+            });
+        });
+        
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
+            radioAll.forEach(radio => {
+                if (radio.checked && radio.value === '1') {
+                    window.application.renderScreen('level-1');
+                    window.application.level = radio.value;
+                } else if (radio.checked && radio.value === '2') {
+                    window.application.renderScreen('level-2');
+                    window.application.level = radio.value;
+                } else if (radio.checked && radio.value === '3') {
+                    window.application.renderScreen('level-3');
+                    window.application.level = radio.value;
+                } 
+            });
+        });
+    </script>
 </body>
 </html>

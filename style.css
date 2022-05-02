@@ -64,6 +64,13 @@ body {
   font-size: 24px;
   color: #FFFFFF;
   margin-top: 20px;
+  -webkit-transition: all .2s;
+  transition: all .2s;
+}
+
+.box__button:hover {
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
 }
 
 .number {
@@ -82,9 +89,25 @@ body {
   border-radius: 12px;
 }
 
+.number:hover {
+  background: #0080C1;
+}
+
+.number:hover span {
+  color: #FFFFFF;
+}
+
+.number__radio {
+  display: none;
+}
+
 .number__text {
   font-size: 64px;
   line-height: 72px;
   color: #0080C1;
+}
+
+.number input:checked + span {
+  color: #FFFFFF;
 }
 /*# sourceMappingURL=style.css.map */

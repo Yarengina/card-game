@@ -41,6 +41,10 @@
         font-size: 24px;
         color: #FFFFFF;
         margin-top: 20px;
+        transition: all .2s;
+        &:hover {
+            transform: scale(1.05);
+        }
     }
  }
  .number {
@@ -51,9 +55,22 @@
     justify-content: center;
     background: #FFFFFF;
     border-radius: 12px;
+    &:hover {
+        background: #0080C1;
+    }
+    &:hover span {
+        color: #FFFFFF;
+   }
+    &__radio {
+        display: none;
+    }
     &__text {
         font-size: 64px;
         line-height: 72px;
         color: #0080C1;
     }
  }
+.number input:checked + span {
+     color: #FFFFFF;
+}
+
