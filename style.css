@@ -125,4 +125,46 @@ body {
   font-size: 64px;
   line-height: 55px;
 }
+
+.card-field {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-column-gap: 10px;
+          column-gap: 10px;
+  row-gap: 4px;
+}
+
+.card {
+  width: 95px;
+  height: 138.5px;
+  position: relative;
+  -webkit-perspective: 1000px;
+          perspective: 1000px;
+}
+
+.face, .back {
+  position: absolute;
+  -webkit-transition: 1s;
+  transition: 1s;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+}
+
+.back {
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+}
+
+.toggleCard {
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+}
+
+.toggleCardAgain {
+  -webkit-transform: rotateY(360deg);
+          transform: rotateY(360deg);
+}
 /*# sourceMappingURL=style.css.map */
