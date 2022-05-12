@@ -73,4 +73,15 @@
 .number input:checked + span {
      color: #FFFFFF;
 }
-
+.timer {
+    color: #FFFFFF;
+    &__unit {
+        font-size: 16px;
+        line-height: 32px;
+        padding-left: 50px;
+    }
+    &__time {
+        font-size: 64px;
+        line-height: 55px;
+    }
+}

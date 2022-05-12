@@ -33,8 +33,7 @@
         window.application = {
             screens: {},
             renderScreen: function(screenName) {
-                const body = document.querySelector('body');
-                body.textContent = '';
+                document.body.textContent = '';
                 this.screens[`${screenName}`]();
             },
             time: {},
