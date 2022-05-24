@@ -4,52 +4,51 @@
 }
 
 body {
-  min-height: 100vh;
-  display: -webkit-box;
-  display: -ms-flexbox;
+  display: box;
+  display: flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  min-height: 100vh;
+  font-family: Nunito, sans-serif;
   background: #004980;
-  font-family: 'Nunito', sans-serif;
 }
 
 .box {
-  width: 480px;
-  height: 459px;
-  display: -webkit-box;
-  display: -ms-flexbox;
+  display: box;
+  display: flexbox;
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  flex-direction: column;
   gap: 46px;
-  background: #C2F5FF;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 480px;
+  height: 459px;
+  background: #c2f5ff;
   border-radius: 12px;
 }
 
 .box__title {
   width: 208px;
+  color: #004980;
   font-size: 40px;
   line-height: 48px;
   text-align: center;
-  color: #004980;
 }
 
 .box__number {
-  display: -webkit-box;
-  display: -ms-flexbox;
+  display: box;
+  display: flexbox;
   display: flex;
   gap: 24px;
 }
@@ -57,44 +56,42 @@ body {
 .box__button {
   width: 246px;
   height: 50px;
-  background: #7AC100;
-  border-radius: 12px;
-  border-width: inherit;
-  font-family: 'Nunito', sans-serif;
-  font-size: 24px;
-  color: #FFFFFF;
   margin-top: 20px;
-  -webkit-transition: all .2s;
-  transition: all .2s;
+  color: #fff;
+  font-size: 24px;
+  font-family: Nunito, sans-serif;
+  background: #7ac100;
+  border-width: inherit;
+  border-radius: 12px;
+  transition: all 0.2s;
 }
 
 .box__button:hover {
-  -webkit-transform: scale(1.05);
-          transform: scale(1.05);
+  transform: scale(1.05);
 }
 
 .number {
-  width: 98px;
-  height: 98px;
-  display: -webkit-box;
-  display: -ms-flexbox;
+  display: box;
+  display: flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  background: #FFFFFF;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 98px;
+  height: 98px;
+  background: #fff;
   border-radius: 12px;
 }
 
 .number:hover {
-  background: #0080C1;
+  background: #0080c1;
 }
 
 .number:hover span {
-  color: #FFFFFF;
+  color: #fff;
 }
 
 .number__radio {
@@ -102,23 +99,23 @@ body {
 }
 
 .number__text {
+  color: #0080c1;
   font-size: 64px;
   line-height: 72px;
-  color: #0080C1;
 }
 
 .number input:checked + span {
-  color: #FFFFFF;
+  color: #fff;
 }
 
 .timer {
-  color: #FFFFFF;
+  color: #fff;
 }
 
 .timer__unit {
+  padding-left: 50px;
   font-size: 16px;
   line-height: 32px;
-  padding-left: 50px;
 }
 
 .timer__time {
@@ -127,44 +124,99 @@ body {
 }
 
 .card-field {
-  display: -webkit-box;
-  display: -ms-flexbox;
+  display: box;
+  display: flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-column-gap: 10px;
-          column-gap: 10px;
+  flex-wrap: wrap;
+  column-gap: 10px;
   row-gap: 4px;
 }
 
 .card {
+  position: relative;
   width: 95px;
   height: 138.5px;
-  position: relative;
-  -webkit-perspective: 1000px;
-          perspective: 1000px;
+  perspective: 1000px;
 }
 
-.face, .back {
+.face,
+.back {
   position: absolute;
-  -webkit-transition: 1s;
+  backface-visibility: hidden;
   transition: 1s;
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
 }
 
 .back {
-  -webkit-transform: rotateY(180deg);
-          transform: rotateY(180deg);
+  transform: rotateY(180deg);
+  transform: rotateY(180deg);
 }
 
-.toggleCard {
-  -webkit-transform: rotateY(180deg);
-          transform: rotateY(180deg);
+.toggle {
+  transform: rotateY(180deg);
+  transform: rotateY(180deg);
 }
 
-.toggleCardAgain {
-  -webkit-transform: rotateY(360deg);
-          transform: rotateY(360deg);
+.toggle-again {
+  transform: rotateY(360deg);
+  transform: rotateY(360deg);
 }
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #004980;
+  opacity: 0.9;
+}
+
+.popup__content {
+  position: absolute;
+  display: box;
+  display: flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.popup__box {
+  gap: 2px;
+  width: 350px;
+  height: 360px;
+  transform: translate(0, -140%);
+}
+
+.popup__box-up {
+  transform: translate(0, 0);
+  transition: all 0.8s ease-in-out;
+}
+
+.popup__img {
+  width: 96px;
+  height: 96px;
+}
+
+.popup__title {
+  width: inherit;
+  font-size: 36px;
+  line-height: 34px;
+}
+
+.popup__title-time {
+  margin-top: 20px;
+  font-size: 20px;
+  line-height: 28px;
+}
+
+.popup__time {
+  font-size: 60px;
+  line-height: 70px;
+}
+
 /*# sourceMappingURL=style.css.map */
