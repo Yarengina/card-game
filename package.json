@@ -7,10 +7,12 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "format": "prettier --write .",
     "lint:js": "eslint './src/**.js'",
-    "stylelint": "stylelint '**/*{.css,.scss}'",
-    "stylelint:fix": "stylelint '**/*{.css,.scss}' --fix",
+    "lint:css": "stylelint './src/styles/**.css'",
+    "lint:ts": "tsc --noEmit",
+    "lint": "npm run lint:js && npm run lint:css",
     "build": "NODE_ENV=production webpack",
-    "start": "webpack-dev-server --open"
+    "start": "webpack-dev-server --open",
+    "prepare": "husky install"
   },
   "author": "",
   "license": "ISC",
@@ -23,6 +25,7 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.0.0",
     "html-webpack-plugin": "^5.5.0",
+    "husky": "^8.0.1",
     "mini-css-extract-plugin": "^2.6.0",
     "prettier": "^2.6.2",
     "style-loader": "^3.3.1",
