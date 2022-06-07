@@ -6,7 +6,7 @@ const mode =
   process.env.NODE_ENV === 'production' ? 'production' : 'development';
 
 module.exports = {
-  entry: ['./src/index.js'],
+  entry: ['./src/index.ts'],
   mode,
   module: {
     rules: [
@@ -15,7 +15,12 @@ module.exports = {
         use: 'ts-loader',
         exclude: /node_modules/,
       },
-      { test: /\.css$/, use: ['style-loader', 'css-loader'] },
+      { test: /\.(s*)css$/, use: [
+        MiniCssExtractPlugin.loader,
+        'css-loader',
+        'sass-loader'
+        ],
+      },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
         type: 'asset/resource',
@@ -41,7 +46,9 @@ module.exports = {
     clean: true,
   },
   plugins: [
-    new MiniCssExtractPlugin(),
+    new MiniCssExtractPlugin({
+      filename: 'style.css',
+    }),
     new HtmlWebpackPlugin({
       template: "./index.html",
     })

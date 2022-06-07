@@ -78,6 +78,10 @@ body {
     color: #fff;
   }
 
+  &__checked {
+    background: #0080c1;
+  }
+
   &__radio {
     display: none;
   }
@@ -108,11 +112,32 @@ body {
   }
 }
 
+.top-field {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+
+.top-field_three {
+  display: flex;
+  align-items: center;
+  gap: 170px;
+}
+
 .card-field {
   display: flex;
   flex-wrap: wrap;
   column-gap: 10px;
   row-gap: 4px;
+  &_one {
+      width: 350px; 
+  }
+  &_two {
+      width: 440px;
+  }
+  &_three {
+      width: 624px;
+  }
 }
 
 .card {
