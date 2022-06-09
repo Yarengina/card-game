@@ -1,7 +1,7 @@
-import { cardData, getRandomElements, shuffle } from './generate';
+import { getRandomElements, shuffle } from './random_cards';
+import { cardData } from './card_data';
 import renderPopup from './popup';
 import { stopTime } from './timer';
-
 
 export default function getCardField(level:string) {
     const cardField = document.createElement('div');
@@ -54,7 +54,7 @@ export default function getCardField(level:string) {
             back.classList.remove('toggle-again');
 
             window.application.cards.push(item.name);
-            const time: HTMLElement = document.querySelector('.timer__time') as HTMLElement;
+            const time = document.querySelector('.timer__time') as HTMLElement;
 
             if (window.application.cards.length === 2) {
                 if (window.application.cards[0] !== window.application.cards[1]) {

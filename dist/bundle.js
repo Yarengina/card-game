@@ -33,105 +33,108 @@ function templateEngine(block) {
   element.appendChild(templateEngine(block.content));
   return element;
 }
+;// CONCATENATED MODULE: ./src/form_field.ts
+function getFormField() {
+    return {
+        block: 'form',
+        cls: 'box',
+        attrs: {
+            action: "#"
+        },
+        content: [
+            {
+                block: 'h1',
+                cls: 'box__title',
+                content: 'Выбери сложность'
+            }, {
+                block: 'div',
+                cls: 'box__number',
+                content: [
+                    {
+                        block: 'label',
+                        cls: 'number',
+                        attrs: {
+                            for: '1',
+                        },
+                        content: [
+                            {
+                                block: 'input',
+                                cls: 'number__radio',
+                                attrs: {
+                                    type: 'radio',
+                                    id: '1',
+                                    value: '1'
+                                }
+                            },
+                            {
+                                block: 'span',
+                                cls: 'number__text',
+                                content: '1'
+                            }
+                        ]
+                    },
+                    {
+                        block: 'label',
+                        cls: 'number',
+                        attrs: {
+                            for: '2',
+                        },
+                        content: [
+                            {
+                                block: 'input',
+                                cls: 'number__radio',
+                                attrs: {
+                                    type: 'radio',
+                                    id: '2',
+                                    value: '2'
+                                }
+                            },
+                            {
+                                block: 'span',
+                                cls: 'number__text',
+                                content: '2'
+                            }
+                        ]
+                    },
+                    {
+                        block: 'label',
+                        cls: 'number',
+                        attrs: {
+                            for: '3',
+                        },
+                        content: [
+                            {
+                                block: 'input',
+                                cls: 'number__radio',
+                                attrs: {
+                                    type: 'radio',
+                                    id: '3',
+                                    value: '3'
+                                }
+                            },
+                            {
+                                block: 'span',
+                                cls: 'number__text',
+                                content: '3'
+                            }
+                        ]
+                    },
+                ]
+            }, {
+                block: 'button',
+                cls: 'box__button',
+                content: 'Старт'
+            }
+        ]
+    };
+}
+;
+
 ;// CONCATENATED MODULE: ./src/main_page.ts
+
 
 function startGame() {
     function renderMainScreen() {
-        function getFormField() {
-            return {
-                block: 'form',
-                cls: 'box',
-                attrs: {
-                    action: "#"
-                },
-                content: [
-                    {
-                        block: 'h1',
-                        cls: 'box__title',
-                        content: 'Выбери сложность'
-                    }, {
-                        block: 'div',
-                        cls: 'box__number',
-                        content: [
-                            {
-                                block: 'label',
-                                cls: 'number',
-                                attrs: {
-                                    for: '1',
-                                },
-                                content: [
-                                    {
-                                        block: 'input',
-                                        cls: 'number__radio',
-                                        attrs: {
-                                            type: 'radio',
-                                            id: '1',
-                                            value: '1'
-                                        }
-                                    },
-                                    {
-                                        block: 'span',
-                                        cls: 'number__text',
-                                        content: '1'
-                                    }
-                                ]
-                            },
-                            {
-                                block: 'label',
-                                cls: 'number',
-                                attrs: {
-                                    for: '2',
-                                },
-                                content: [
-                                    {
-                                        block: 'input',
-                                        cls: 'number__radio',
-                                        attrs: {
-                                            type: 'radio',
-                                            id: '2',
-                                            value: '2'
-                                        }
-                                    },
-                                    {
-                                        block: 'span',
-                                        cls: 'number__text',
-                                        content: '2'
-                                    }
-                                ]
-                            },
-                            {
-                                block: 'label',
-                                cls: 'number',
-                                attrs: {
-                                    for: '3',
-                                },
-                                content: [
-                                    {
-                                        block: 'input',
-                                        cls: 'number__radio',
-                                        attrs: {
-                                            type: 'radio',
-                                            id: '3',
-                                            value: '3'
-                                        }
-                                    },
-                                    {
-                                        block: 'span',
-                                        cls: 'number__text',
-                                        content: '3'
-                                    }
-                                ]
-                            },
-                        ]
-                    }, {
-                        block: 'button',
-                        cls: 'box__button',
-                        content: 'Старт'
-                    }
-                ]
-            };
-        }
-        ;
         document.body.append(templateEngine(getFormField()));
         var radioAll = document.querySelectorAll('.number__radio');
         radioAll.forEach(function (radio) {
@@ -146,14 +149,8 @@ function startGame() {
         form.addEventListener('submit', function (event) {
             event.preventDefault();
             radioAll.forEach(function (radio) {
-                if (radio.checked && radio.value === '1') {
-                    window.application.renderScreen('level-1');
-                }
-                else if (radio.checked && radio.value === '2') {
-                    window.application.renderScreen('level-2');
-                }
-                else if (radio.checked && radio.value === '3') {
-                    window.application.renderScreen('level-3');
+                if (radio.checked) {
+                    window.application.renderScreen("level-".concat(radio.value));
                 }
             });
         });
@@ -182,6 +179,9 @@ function startTime() {
 ;
 function stopTime() {
     clearTimeout(indTime);
+}
+;
+function resetTimer() {
     sec = 0;
     min = 0;
 }
@@ -195,7 +195,7 @@ function addTime() {
 }
 ;
 
-;// CONCATENATED MODULE: ./src/generate.ts
+;// CONCATENATED MODULE: ./src/random_cards.ts
 var __spreadArray = (undefined && undefined.__spreadArray) || function (to, from, pack) {
     if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
         if (ar || !(i in from)) {
@@ -205,44 +205,6 @@ var __spreadArray = (undefined && undefined.__spreadArray) || function (to, from
     }
     return to.concat(ar || Array.prototype.slice.call(from));
 };
-var cardData = [
-    { imgSrc: './src/img/6-Clubs.png', name: '6-Clubs' },
-    { imgSrc: './src/img/6-Diamonds.png', name: '6-Diamonds' },
-    { imgSrc: './src/img/6-Hearts.png', name: '6-Hearts' },
-    { imgSrc: './src/img/6-Spades.png', name: '6-Spades' },
-    { imgSrc: './src/img/7-Clubs.png', name: '7-Clubs' },
-    { imgSrc: './src/img/7-Diamonds.png', name: '7-Diamonds' },
-    { imgSrc: './src/img/7-Hearts.png', name: '7-Hearts' },
-    { imgSrc: './src/img/7-Spades.png', name: '7-Spades' },
-    { imgSrc: './src/img/8-Clubs.png', name: '8-Clubs' },
-    { imgSrc: './src/img/8-Diamonds.png', name: '8-Diamonds' },
-    { imgSrc: './src/img/8-Hearts.png', name: '8-Hearts' },
-    { imgSrc: './src/img/8-Spades.png', name: '8-Spades' },
-    { imgSrc: './src/img/9-Clubs.png', name: '9-Clubs' },
-    { imgSrc: './src/img/9-Diamonds.png', name: '9-Diamonds' },
-    { imgSrc: './src/img/9-Hearts.png', name: '9-Hearts' },
-    { imgSrc: './src/img/9-Spades.png', name: '9-Spades' },
-    { imgSrc: './src/img/10-Clubs.png', name: '10-Clubs' },
-    { imgSrc: './src/img/10-Diamonds.png', name: '10-Diamonds' },
-    { imgSrc: './src/img/10-Hearts.png', name: '10-Hearts' },
-    { imgSrc: './src/img/10-Spades.png', name: '10-Spades' },
-    { imgSrc: './src/img/Ace-Clubs.png', name: 'Ace-Clubs' },
-    { imgSrc: './src/img/Ace-Diamonds.png', name: 'Ace-Diamonds' },
-    { imgSrc: './src/img/Ace-Hearts.png', name: 'Ace-Hearts' },
-    { imgSrc: './src/img/Ace-Spades.png', name: 'Ace-Spades' },
-    { imgSrc: './src/img/Jack-Clubs.png', name: 'Jack-Clubs' },
-    { imgSrc: './src/img/Jack-Diamonds.png', name: 'Jack-Diamonds' },
-    { imgSrc: './src/img/Jack-Hearts.png', name: 'Jack-Hearts' },
-    { imgSrc: './src/img/Jack-Spades.png', name: 'Jack-Spades' },
-    { imgSrc: './src/img/King-Clubs.png', name: 'King-Clubs' },
-    { imgSrc: './src/img/King-Diamonds.png', name: 'King-Diamonds' },
-    { imgSrc: './src/img/King-Hearts.png', name: 'King-Hearts' },
-    { imgSrc: './src/img/King-Spades.png', name: 'King-Spades' },
-    { imgSrc: './src/img/Queen-Clubs.png', name: 'Queen-Clubs' },
-    { imgSrc: './src/img/Queen-Diamonds.png', name: 'Queen-Diamonds' },
-    { imgSrc: './src/img/Queen-Hearts.png', name: 'Queen-Hearts' },
-    { imgSrc: './src/img/Queen-Spades.png', name: 'Queen-Spades' },
-];
 var getRandomElements = function (sourceArray, neededElements) {
     var result = [];
     for (var i = 0; i < neededElements; i++) {
@@ -258,6 +220,47 @@ var shuffle = function (array) {
         _a = [array[j], array[i]], array[i] = _a[0], array[j] = _a[1];
     }
 };
+
+;// CONCATENATED MODULE: ./src/card_data.ts
+var imgSrc = './src/img';
+var cardData = [
+    { imgSrc: "".concat(imgSrc, "/6-Clubs.png"), name: '6-Clubs' },
+    { imgSrc: "".concat(imgSrc, "/6-Diamonds.png"), name: '6-Diamonds' },
+    { imgSrc: "".concat(imgSrc, "/6-Hearts.png"), name: '6-Hearts' },
+    { imgSrc: "".concat(imgSrc, "/6-Spades.png"), name: '6-Spades' },
+    { imgSrc: "".concat(imgSrc, "/7-Clubs.png"), name: '7-Clubs' },
+    { imgSrc: "".concat(imgSrc, "/7-Diamonds.png"), name: '7-Diamonds' },
+    { imgSrc: "".concat(imgSrc, "/7-Hearts.png"), name: '7-Hearts' },
+    { imgSrc: "".concat(imgSrc, "/7-Spades.png"), name: '7-Spades' },
+    { imgSrc: "".concat(imgSrc, "/8-Clubs.png"), name: '8-Clubs' },
+    { imgSrc: "".concat(imgSrc, "/8-Diamonds.png"), name: '8-Diamonds' },
+    { imgSrc: "".concat(imgSrc, "/8-Hearts.png"), name: '8-Hearts' },
+    { imgSrc: "".concat(imgSrc, "/8-Spades.png"), name: '8-Spades' },
+    { imgSrc: "".concat(imgSrc, "/9-Clubs.png"), name: '9-Clubs' },
+    { imgSrc: "".concat(imgSrc, "/9-Diamonds.png"), name: '9-Diamonds' },
+    { imgSrc: "".concat(imgSrc, "/9-Hearts.png"), name: '9-Hearts' },
+    { imgSrc: "".concat(imgSrc, "/9-Spades.png"), name: '9-Spades' },
+    { imgSrc: "".concat(imgSrc, "/10-Clubs.png"), name: '10-Clubs' },
+    { imgSrc: "".concat(imgSrc, "/10-Diamonds.png"), name: '10-Diamonds' },
+    { imgSrc: "".concat(imgSrc, "/10-Hearts.png"), name: '10-Hearts' },
+    { imgSrc: "".concat(imgSrc, "/10-Spades.png"), name: '10-Spades' },
+    { imgSrc: "".concat(imgSrc, "/Ace-Clubs.png"), name: 'Ace-Clubs' },
+    { imgSrc: "".concat(imgSrc, "/Ace-Diamonds.png"), name: 'Ace-Diamonds' },
+    { imgSrc: "".concat(imgSrc, "/Ace-Hearts.png"), name: 'Ace-Hearts' },
+    { imgSrc: "".concat(imgSrc, "/Ace-Spades.png"), name: 'Ace-Spades' },
+    { imgSrc: "".concat(imgSrc, "/Jack-Clubs.png"), name: 'Jack-Clubs' },
+    { imgSrc: "".concat(imgSrc, "/Jack-Diamonds.png"), name: 'Jack-Diamonds' },
+    { imgSrc: "".concat(imgSrc, "/Jack-Hearts.png"), name: 'Jack-Hearts' },
+    { imgSrc: "".concat(imgSrc, "/Jack-Spades.png"), name: 'Jack-Spades' },
+    { imgSrc: "".concat(imgSrc, "/King-Clubs.png"), name: 'King-Clubs' },
+    { imgSrc: "".concat(imgSrc, "/King-Diamonds.png"), name: 'King-Diamonds' },
+    { imgSrc: "".concat(imgSrc, "/King-Hearts.png"), name: 'King-Hearts' },
+    { imgSrc: "".concat(imgSrc, "/King-Spades.png"), name: 'King-Spades' },
+    { imgSrc: "".concat(imgSrc, "/Queen-Clubs.png"), name: 'Queen-Clubs' },
+    { imgSrc: "".concat(imgSrc, "/Queen-Diamonds.png"), name: 'Queen-Diamonds' },
+    { imgSrc: "".concat(imgSrc, "/Queen-Hearts.png"), name: 'Queen-Hearts' },
+    { imgSrc: "".concat(imgSrc, "/Queen-Spades.png"), name: 'Queen-Spades' },
+];
 
 ;// CONCATENATED MODULE: ./src/popup.ts
 function renderPopup(src, message) {
@@ -304,6 +307,7 @@ function renderPopup(src, message) {
 ;
 
 ;// CONCATENATED MODULE: ./src/card_field.ts
+
 
 
 
@@ -381,7 +385,7 @@ function getCardField(level) {
 
 function startLevelOne() {
     function renderLevelOneScreen() {
-        document.body.style.cssText = 'flex-direction: column; gap: 45px;';
+        document.body.classList.add('levelOne');
         function getTopField() {
             return {
                 block: 'div',
@@ -420,6 +424,7 @@ function startLevelOne() {
             window.location.reload();
             window.application.renderScreen('main-page');
         };
+        resetTimer();
         addTime();
         window.application.playerMoves = 6;
         getCardField('level-1');
@@ -435,7 +440,7 @@ function startLevelOne() {
 
 function startLevelTwo() {
     function renderLevelTwoScreen() {
-        document.body.style.cssText = 'flex-direction: column; gap: 35px;';
+        document.body.classList.add('levelTwoThree');
         function getTopField() {
             return {
                 block: 'div',
@@ -474,6 +479,7 @@ function startLevelTwo() {
             window.location.reload();
             window.application.renderScreen('main-page');
         };
+        resetTimer();
         addTime();
         window.application.playerMoves = 12;
         getCardField('level-2');
@@ -489,7 +495,7 @@ function startLevelTwo() {
 
 function startLevelThree() {
     function renderLevelThreeScreen() {
-        document.body.style.cssText = 'flex-direction: column; gap: 35px;';
+        document.body.classList.add('levelTwoThree');
         function getTopField() {
             return {
                 block: 'div',
@@ -528,6 +534,7 @@ function startLevelThree() {
             window.location.reload();
             window.application.renderScreen('main-page');
         };
+        resetTimer();
         addTime();
         window.application.playerMoves = 18;
         getCardField('level-3');

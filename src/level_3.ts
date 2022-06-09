@@ -1,10 +1,10 @@
-import { addTime } from './timer';
+import { addTime, resetTimer } from './timer';
 import getCardField from './card_field';
 import templateEngine from './template';
 
 export default function startLevelThree() {
   function renderLevelThreeScreen() {
-    document.body.style.cssText = 'flex-direction: column; gap: 35px;';
+    document.body.classList.add('levelTwoThree');
 
     function getTopField() {
       return {
@@ -39,17 +39,19 @@ export default function startLevelThree() {
 
   document.body.append(templateEngine(getTopField()));
 
-  const button: HTMLElement = document.querySelector('.box__button') as HTMLElement;
+  const button = document.querySelector('.box__button') as HTMLElement;
   button.onclick = function() {
     window.location.reload();
     window.application.renderScreen('main-page');
   };
   
+  resetTimer();
   addTime();
 
   window.application.playerMoves = 18;
 
   getCardField('level-3');  
   };
+
   window.application.screens['level-3'] = renderLevelThreeScreen;
 };

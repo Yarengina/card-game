@@ -1,10 +1,10 @@
-import { addTime } from './timer';
+import { addTime, resetTimer } from './timer';
 import getCardField from './card_field';
 import templateEngine from './template';
 
 export default function startLevelOne() {
   function renderLevelOneScreen() {
-    document.body.style.cssText = 'flex-direction: column; gap: 45px;';
+    document.body.classList.add('levelOne');
     
     function getTopField() {
       return {
@@ -39,17 +39,19 @@ export default function startLevelOne() {
 
   document.body.append(templateEngine(getTopField()));
 
-  const button: HTMLElement = document.querySelector('.box__button') as HTMLElement;
+  const button = document.querySelector('.box__button') as HTMLElement;
   button.onclick = function() {
       window.location.reload();
       window.application.renderScreen('main-page');
   };
-  
+
+  resetTimer();
   addTime();
 
   window.application.playerMoves = 6;
 
   getCardField('level-1');  
   };
+
   window.application.screens['level-1'] = renderLevelOneScreen;
 };

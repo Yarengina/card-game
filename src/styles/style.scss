@@ -18,7 +18,14 @@ body {
   font-family: Nunito, sans-serif;
   background: #004980;
 }
-
+.levelOne {
+  flex-direction: column;
+  gap: 45px;
+}
+.levelTwoThree {
+  flex-direction: column;
+  gap: 35px;
+}
 .box {
   display: flex;
   flex-direction: column;

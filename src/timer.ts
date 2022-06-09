@@ -16,13 +16,15 @@ function startTime() {
 
 export function stopTime() {
     clearTimeout(indTime);
+};
+export function resetTimer() {
     sec = 0;
     min = 0;
 };
 
 export function addTime() {
     tick();
-    const time: HTMLElement = document.querySelector('.timer__time') as HTMLElement;
+    const time = document.querySelector('.timer__time') as HTMLElement;
     time.textContent = (min > 9 ? min : "0" + min)
         + ":" + (sec > 9 ? sec : "0" + sec);
     startTime();
