@@ -1,9 +1,10 @@
-import { getRandomElements, shuffle } from './random_cards';
+import { getRandomCards } from './random_cards';
+import { shuffle } from './utils';
 import { cardData } from './card_data';
 import renderPopup from './popup';
 import { stopTime } from './timer';
 
-export default function getCardField(level:string) {
+export default function getCardField(level: string) {
     const cardField = document.createElement('div');
     cardField.classList.add('card-field');
 
@@ -13,9 +14,12 @@ export default function getCardField(level:string) {
         cardField.classList.add('card-field_two');
     } else if (level === 'level-3') {
         cardField.classList.add('card-field_three');
-    };
+    }
 
-    const randomData = getRandomElements(cardData, window.application.playerMoves/2);
+    const randomData = getRandomCards(
+        cardData,
+        window.application.playerMoves / 2
+    );
     shuffle(randomData);
 
     randomData.forEach((item) => {
@@ -34,7 +38,7 @@ export default function getCardField(level:string) {
         backImg.classList.add('back-img');
 
         faceImg.src = item.imgSrc;
-        backImg.src = "src/img/card.png";
+        backImg.src = 'src/img/card.png';
 
         cardField.append(card);
         card.append(face);
@@ -57,22 +61,24 @@ export default function getCardField(level:string) {
             const time = document.querySelector('.timer__time') as HTMLElement;
 
             if (window.application.cards.length === 2) {
-                if (window.application.cards[0] !== window.application.cards[1]) {
+                if (
+                    window.application.cards[0] !== window.application.cards[1]
+                ) {
                     stopTime();
                     window.application.time = time.textContent;
                     setTimeout(() => {
-                      renderPopup('src/img/lose.png', 'Вы проиграли!');
+                        renderPopup('src/img/lose.png', 'Вы проиграли!');
                     }, 1000);
-                  } else if (window.application.playerMoves === 0) {
+                } else if (window.application.playerMoves === 0) {
                     stopTime();
                     window.application.time = time.textContent;
                     setTimeout(() => {
-                      renderPopup('src/img/win.png', 'Вы выиграли!');
+                        renderPopup('src/img/win.png', 'Вы выиграли!');
                     }, 1000);
-                  };
+                }
                 window.application.cards.length = 0;
-            };
+            }
         });
     });
     document.body.append(cardField);
-};
+}

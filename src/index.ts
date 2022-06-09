@@ -12,7 +12,7 @@ window.application = {
     },
     cards: [],
     playerMoves: 3,
-    time: ''
+    time: '',
 };
 
 startGame();

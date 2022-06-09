@@ -1,13 +1,13 @@
 export type Screens = {
-    [key: string]: Function
-}
+    [key: string]: Function;
+};
 export type WindowApp = {
-    screens: Screens,
-    renderScreen: Function,
-    cards: Array<string>,
-    playerMoves: number,
-    time: string | null
-}
+    screens: Screens;
+    renderScreen: Function;
+    cards: Array<string>;
+    playerMoves: number;
+    time: string | null;
+};
 declare global {
     interface Window {
         Window: Window;
@@ -15,6 +15,6 @@ declare global {
     }
 }
 export type Cards = {
-    imgSrc: string,
-    name: string
-}
+    imgSrc: string;
+    name: string;
+};
