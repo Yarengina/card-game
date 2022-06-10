@@ -135,6 +135,7 @@
             ],
         };
     } // CONCATENATED MODULE: ./src/main_page.ts
+
     function startGame() {
         function renderMainScreen() {
             document.body.append(templateEngine(getFormField()));
@@ -166,6 +167,7 @@
         }
         window.application.screens['main-page'] = renderMainScreen;
     } // CONCATENATED MODULE: ./src/timer.ts
+
     var sec = 0;
     var min = 0;
     var indTime;
@@ -193,6 +195,7 @@
             (min > 9 ? min : '0' + min) + ':' + (sec > 9 ? sec : '0' + sec);
         startTime();
     } // CONCATENATED MODULE: ./src/random_cards.ts
+
     var __spreadArray =
         (undefined && undefined.__spreadArray) ||
         function (to, from, pack) {
@@ -212,11 +215,7 @@
             result.push(sourceArray.splice(index, 1)[0]);
         }
         return __spreadArray(__spreadArray([], result, true), result, true);
-    };
-    var minNumberOfCards = 6;
-    var indexLevelOne = 1;
-    var indexLevelTwo = 2;
-    var indexLevelThree = 3; // CONCATENATED MODULE: ./src/utils.ts
+    }; // CONCATENATED MODULE: ./src/utils.ts
 
     var shuffle = function (array) {
         var _a;
@@ -325,6 +324,7 @@
             };
         }, 300);
     } // CONCATENATED MODULE: ./src/card_field.ts
+
     function getCardField(level) {
         var cardField = document.createElement('div');
         cardField.classList.add('card-field');
@@ -390,7 +390,13 @@
             });
         });
         document.body.append(cardField);
-    } // CONCATENATED MODULE: ./src/level_1.ts
+    } // CONCATENATED MODULE: ./src/constants.ts
+
+    var minNumberOfCards = 6;
+    var indexLevelOne = 1;
+    var indexLevelTwo = 2;
+    var indexLevelThree = 3; // CONCATENATED MODULE: ./src/level_1.ts
+
     function startLevelOne() {
         function renderLevelOneScreen() {
             document.body.classList.add('levelOne');
@@ -440,6 +446,7 @@
         }
         window.application.screens['level-1'] = renderLevelOneScreen;
     } // CONCATENATED MODULE: ./src/level_2.ts
+
     function startLevelTwo() {
         function renderLevelTwoScreen() {
             document.body.classList.add('levelTwoThree');
@@ -489,6 +496,7 @@
         }
         window.application.screens['level-2'] = renderLevelTwoScreen;
     } // CONCATENATED MODULE: ./src/level_3.ts
+
     function startLevelThree() {
         function renderLevelThreeScreen() {
             document.body.classList.add('levelTwoThree');
@@ -538,6 +546,7 @@
         }
         window.application.screens['level-3'] = renderLevelThreeScreen;
     } // CONCATENATED MODULE: ./src/index.ts
+
     window.application = {
         screens: {},
         renderScreen: function (screenName) {

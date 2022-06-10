@@ -1,4 +1,4 @@
-import { WindowApp } from './types';
+import { WindowApp } from './src/types';
 
 declare global {
     interface Window {

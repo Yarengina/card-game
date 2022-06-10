@@ -1,7 +1,7 @@
 import { addTime, resetTimer } from './timer';
 import getCardField from './card_field';
 import templateEngine from './template';
-import { minNumberOfCards, indexLevelTwo } from './random_cards';
+import { minNumberOfCards, indexLevelTwo } from './constants';
 
 export default function startLevelTwo() {
     function renderLevelTwoScreen() {
