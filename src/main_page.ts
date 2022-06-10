@@ -7,7 +7,7 @@ export default function startGame() {
 
         const radioAll = document.querySelectorAll('.number__radio');
 
-        radioAll.forEach(radio => {
+        radioAll.forEach((radio) => {
             radio.addEventListener('click', () => {
                 if ((radio as HTMLInputElement).checked) {
                     const parent = radio.parentElement as HTMLElement;
@@ -16,17 +16,23 @@ export default function startGame() {
             });
         });
 
+        function goToLevels() {
+            radioAll.forEach((radio) => {
+                if ((radio as HTMLInputElement).checked) {
+                    window.application.renderScreen(
+                        `level-${(radio as HTMLInputElement).value}`
+                    );
+                }
+            });
+        }
+
         const form = document.querySelector('.box') as HTMLElement;
 
         form.addEventListener('submit', (event) => {
             event.preventDefault();
-            radioAll.forEach(radio => {
-                if ((radio as HTMLInputElement).checked) {
-                    window.application.renderScreen(`level-${(radio as HTMLInputElement).value}`);
-                } 
-            });
+            goToLevels();
         });
-    };
+    }
 
     window.application.screens['main-page'] = renderMainScreen;
-};
+}
