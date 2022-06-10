@@ -1,7 +1,7 @@
 import { addTime, resetTimer } from './timer';
 import getCardField from './card_field';
 import templateEngine from './template';
-import { minNumberOfCards, indexLevelOne } from './random_cards';
+import { minNumberOfCards, indexLevelOne } from './constants';
 
 export default function startLevelOne() {
     function renderLevelOneScreen() {

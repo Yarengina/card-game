@@ -1,7 +1,7 @@
 import { addTime, resetTimer } from './timer';
 import getCardField from './card_field';
 import templateEngine from './template';
-import { minNumberOfCards, indexLevelThree } from './random_cards';
+import { minNumberOfCards, indexLevelThree } from './constants';
 
 export default function startLevelThree() {
     function renderLevelThreeScreen() {

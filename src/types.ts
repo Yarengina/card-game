@@ -8,12 +8,6 @@ export type WindowApp = {
     playerMoves: number;
     time: string | null;
 };
-declare global {
-    interface Window {
-        Window: Window;
-        application: WindowApp;
-    }
-}
 export type Cards = {
     imgSrc: string;
     name: string;
