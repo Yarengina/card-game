@@ -13,7 +13,7 @@ describe('shuffle()', () => {
         { imgSrc: 'Six.png', name: 'Six' },
     ];
 
-    it('should be shuffled array', () => {
+    it('should shuffle array', () => {
         Math.random.mockImplementation(() => 0.4);
         shuffle(array);
         const expectedArray = [
