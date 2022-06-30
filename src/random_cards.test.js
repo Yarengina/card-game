@@ -4,23 +4,23 @@ import { getRandomCards } from './random_cards';
 Math.random = jest.fn();
 
 describe('getRandomCards()', () => {
-    it('should make an array of the length 6', () => {
-        const array = [
+    it('should create new array of length 6 from source array', () => {
+        const sourceArray = [
             { imgSrc: 'One.png', name: 'One' },
             { imgSrc: 'Two.png', name: 'Two' },
             { imgSrc: 'Three.png', name: 'Three' },
             { imgSrc: 'Four.png', name: 'Four' },
             { imgSrc: 'Five.png', name: 'Five' },
         ];
-        const neededCards = 3;
+        const numberPairsOfCards = 3;
 
         Math.random.mockImplementation(() => 0.5);
 
-        expect(getRandomCards(array, neededCards)).toHaveLength(6);
+        expect(getRandomCards(sourceArray, numberPairsOfCards)).toHaveLength(6);
     });
 
-    it('should make an array of random cards', () => {
-        const array = [
+    it('should create new array of 4 pairs of random cards', () => {
+        const sourceArray = [
             { imgSrc: 'One.png', name: 'One' },
             { imgSrc: 'Two.png', name: 'Two' },
             { imgSrc: 'Three.png', name: 'Three' },
@@ -28,7 +28,7 @@ describe('getRandomCards()', () => {
             { imgSrc: 'Five.png', name: 'Five' },
             { imgSrc: 'Six.png', name: 'Six' },
         ];
-        const neededCards = 4;
+        const numberPairsOfCards = 4;
 
         Math.random.mockImplementation(() => 0.4);
 
@@ -42,6 +42,8 @@ describe('getRandomCards()', () => {
             { imgSrc: 'Two.png', name: 'Two' },
             { imgSrc: 'Five.png', name: 'Five' },
         ];
-        expect(getRandomCards(array, neededCards)).toEqual(expectedArray);
+        expect(getRandomCards(sourceArray, numberPairsOfCards)).toEqual(
+            expectedArray
+        );
     });
 });
