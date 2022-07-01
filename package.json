@@ -9,7 +9,7 @@
         "lint:js": "eslint './src/**.js'",
         "lint:scss": "stylelint './src/styles/**.scss'",
         "lint:ts": "tsc --noEmit",
-        "lint": "npm run lint:ts && npm run lint:js && npm run test",
+        "lint": "npm run lint:js && npm run test",
         "build": "NODE_ENV=production webpack",
         "start": "webpack-dev-server --open",
         "prepare": "husky install"
