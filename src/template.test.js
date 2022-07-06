@@ -8,28 +8,31 @@ global.document = dom.window.document;
 global.window = dom.window;
 
 describe('templateEngine()', () => {
-    it('should return undefined', () => {
+    it('should create one child in body', () => {
         const getBlock = () => {
             return {
                 block: undefined,
             };
         };
 
-        expect(
-            dom.window.document.body.append(templateEngine(getBlock()))
-        ).toBeUndefined();
+        dom.window.document.body.appendChild(templateEngine(getBlock()));
+
+        const expected = dom.window.document.body.children;
+
+        expect(expected).toHaveLength(1);
     });
 
-    it('should not return undefined', () => {
+    it('should create html paragraph with content  in body', () => {
         const getBlock = () => {
             return {
                 block: 'p',
                 content: 'text',
             };
         };
+        dom.window.document.body.appendChild(templateEngine(getBlock()));
 
-        expect(
-            dom.window.document.body.append(templateEngine(getBlock()))
-        ).not.toBeUndefined();
+        const expected = dom.window.document.querySelector('p').textContent;
+
+        expect(expected).toEqual('text');
     });
 });
