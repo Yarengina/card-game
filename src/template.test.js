@@ -8,21 +8,23 @@ global.document = dom.window.document;
 global.window = dom.window;
 
 describe('templateEngine()', () => {
-    it('should create one child in body', () => {
+    it('should create input of type radio in body', () => {
         const getBlock = () => {
             return {
-                block: undefined,
+                block: 'input',
+                attrs: {
+                    type: 'radio',
+                },
             };
         };
-
         dom.window.document.body.appendChild(templateEngine(getBlock()));
 
-        const expected = dom.window.document.body.children;
+        const expected = dom.window.document.querySelector('input').type;
 
-        expect(expected).toHaveLength(1);
+        expect(expected).toEqual('radio');
     });
 
-    it('should create html paragraph with content  in body', () => {
+    it('should create html paragraph with content in body', () => {
         const getBlock = () => {
             return {
                 block: 'p',
