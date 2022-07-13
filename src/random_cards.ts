@@ -6,8 +6,9 @@ export const getRandomCards = function (
 ) {
     const result = [];
     for (let i = 0; i < neededCards; i++) {
-        const index = Math.floor(Math.random() * sourceArray.length);
-        result.push(sourceArray.splice(index, 1)[0]);
+        const randomIndex = Math.floor(Math.random() * sourceArray.length);
+        const randomCard = sourceArray.splice(randomIndex, 1)[0];
+        result.push(randomCard);
     }
     return [...result, ...result];
 };

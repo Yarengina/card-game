@@ -1,7 +1,7 @@
 import { getRandomCards } from './random_cards';
 import { shuffle } from './utils';
 import { cardData } from './card_data';
-import renderPopup from './popup';
+import getPopupField from './popup_field';
 import { stopTime } from './timer';
 
 export default function getCardField(level: string) {
@@ -67,13 +67,13 @@ export default function getCardField(level: string) {
                     stopTime();
                     window.application.time = time.textContent;
                     setTimeout(() => {
-                        renderPopup('src/img/lose.png', 'Вы проиграли!');
+                        getPopupField('src/img/lose.png', 'Вы проиграли!');
                     }, 1000);
                 } else if (window.application.playerMoves === 0) {
                     stopTime();
                     window.application.time = time.textContent;
                     setTimeout(() => {
-                        renderPopup('src/img/win.png', 'Вы выиграли!');
+                        getPopupField('src/img/win.png', 'Вы выиграли!');
                     }, 1000);
                 }
                 window.application.cards.length = 0;

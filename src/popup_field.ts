@@ -1,4 +1,4 @@
-export default function renderPopup(src: string, message: string) {
+export default function getPopupField(src: string, message: string) {
     setTimeout(() => {
         const popup = document.createElement('div');
         const popupContent = document.createElement('div');

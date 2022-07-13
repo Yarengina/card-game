@@ -1,5 +1,5 @@
 import './styles/style.scss';
-import startGame from './main_page';
+import startGame from './start_game';
 import startLevelOne from './level_1';
 import startLevelTwo from './level_2';
 import startLevelThree from './level_3';
