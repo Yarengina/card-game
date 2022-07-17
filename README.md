@@ -34,13 +34,15 @@ If the cards do not match the player loses.
 ### _Build Setup_
 
 - install dependencies
-           
-      npm install
+```bash
+ npm install
+```
 
 - build for production and launch server
-
-      npm run build
-      npm run start
+```bash
+ npm run build
+ npm run start
+```
 
 ### _Built With_
 
