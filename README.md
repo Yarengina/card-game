@@ -2,6 +2,8 @@
 
 The project on the development tools course. I am learning web development and this is my first project on github.
 
+Deploy [here](https://small-card-game.netlify.app/)
+
 ### _Description_
 
 Card game contains three difficulty levels: easy, medium, and difficult. The number of cards that will be shown to the user on the game screen depends on the difficulty level.

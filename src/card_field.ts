@@ -38,7 +38,7 @@ export default function getCardField(level: string) {
         backImg.classList.add('back-img');
 
         faceImg.src = item.imgSrc;
-        backImg.src = 'src/img/card.png';
+        backImg.src = 'static/img/card.png';
 
         cardField.append(card);
         card.append(face);
@@ -67,13 +67,13 @@ export default function getCardField(level: string) {
                     stopTime();
                     window.application.time = time.textContent;
                     setTimeout(() => {
-                        getPopupField('src/img/lose.png', 'Вы проиграли!');
+                        getPopupField('static/img/lose.png', 'Вы проиграли!');
                     }, 1000);
                 } else if (window.application.playerMoves === 0) {
                     stopTime();
                     window.application.time = time.textContent;
                     setTimeout(() => {
-                        getPopupField('src/img/win.png', 'Вы выиграли!');
+                        getPopupField('static/img/win.png', 'Вы выиграли!');
                     }, 1000);
                 }
                 window.application.cards.length = 0;

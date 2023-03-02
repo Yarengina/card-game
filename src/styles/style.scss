@@ -64,6 +64,7 @@ body {
         border-width: inherit;
         border-radius: 12px;
         transition: all 0.2s;
+        cursor: pointer;
 
         &:hover {
             transform: scale(1.05);
@@ -79,6 +80,7 @@ body {
     height: 98px;
     background: #fff;
     border-radius: 12px;
+    cursor: pointer;
 
     &:hover {
         background: #0080c1;
@@ -168,6 +170,10 @@ body {
     transform: rotateY(180deg);
 }
 
+.back-img {
+    cursor: pointer;
+}
+
 .toggle {
     transform: rotateY(180deg);
 }
@@ -225,5 +231,104 @@ body {
     &__time {
         font-size: 60px;
         line-height: 70px;
+    }
+}
+
+@media (max-width: 425px) {
+    .box {
+        width: 340px;
+        height: 400px;
+
+        &__title {
+            width: 180px;
+            font-size: 30px;
+            line-height: 38px;
+        }
+
+        &__number {
+            gap: 10px;
+        }
+
+        &__button {
+            width: 200px;
+            height: 44px;
+            margin-top: 10px;
+            font-size: 22px;
+        }
+    }
+
+    .number {
+        width: 80px;
+        height: 80px;
+
+        &__text {
+            font-size: 44px;
+            line-height: 52px;
+        }
+    }
+
+    .top-field {
+        gap: 20px;
+        margin-top: 30px;
+    }
+
+    .timer {
+        &__unit {
+            padding-left: 20px;
+            font-size: 14px;
+            line-height: 28px;
+        }
+
+        &__time {
+            font-size: 44px;
+            line-height: 35px;
+        }
+    }
+
+    .card-field {
+        column-gap: 6px;
+        row-gap: 0px;
+
+        &_one {
+            width: 304px;
+        }
+
+        &_two {
+            width: 302px;
+        }
+
+        &_three {
+            width: 302px;
+            margin-bottom: 30px;
+        }
+    }
+
+    .popup {
+        &__box {
+            width: 300px;
+            height: 340px;
+            gap: 6px;
+        }
+
+        &__img {
+            width: 80px;
+            height: 80px;
+        }
+
+        &__title {
+            font-size: 26px;
+            line-height: 24px;
+        }
+
+        &__title-time {
+            margin-top: 10px;
+            font-size: 16px;
+            line-height: 18px;
+        }
+
+        &__time {
+            font-size: 40px;
+            line-height: 50px;
+        }
     }
 }
