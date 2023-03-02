@@ -1,4 +1,4 @@
-const imgSrc = './src/img';
+const imgSrc = './static/img';
 
 export const cardData = [
     { imgSrc: `${imgSrc}/6-Clubs.png`, name: '6-Clubs' },
